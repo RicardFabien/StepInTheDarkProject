@@ -1,17 +1,47 @@
+html{
+  height: 100%;
+}
+
+body{
+  height: 100%;
+  width: 100%;
+  margin:0;
+  padding:10;
+  background-color: yellow;
+
+}
+
+#root{
+  height: 100%;
+  margin: 0;
+  background-color: black;
+}
+
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  background-color: green;
+
+  height: 100%;
+  margin: 0
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App-part{
+  margin: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Chat{
+  flex-grow: 1;
+  background-color: red;
 }
+
+.Game{
+  flex-grow: 3;
+  background-color: blue;
+}
+
 
 .App-header {
   background-color: #282c34;
@@ -24,15 +54,3 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
