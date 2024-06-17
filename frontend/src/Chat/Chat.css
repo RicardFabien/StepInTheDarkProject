@@ -1,0 +1,28 @@
+.Chat{
+    flex-grow: 1;
+    background-color: #282c34;;
+    display: flex;
+    flex-direction: column;
+
+    max-height:100%
+  }
+
+#screen{
+    flex-basis: 80%;
+    background-color: grey;
+    overflow-y: auto;
+    flex-grow: 9;
+
+    display: flex;
+    flex-direction: column;
+}
+
+textarea{
+    flex-grow: 1;
+    resize: none;
+}
+
+
+.chat-message{
+    background-color: blue;
+}

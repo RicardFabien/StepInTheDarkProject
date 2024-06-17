@@ -1,45 +1,49 @@
-html{
-  height: 100%;
-}
 
-body{
-  height: 100%;
-  width: 100%;
-  margin:0;
-  padding:10;
-  background-color: yellow;
+
+html,body,#root{
+  margin: 0px;
+  padding: 0px;
 
 }
 
-#root{
-  height: 100%;
-  margin: 0;
-  background-color: black;
-}
+
 
 .App {
   text-align: center;
   display: flex;
-  flex-direction: row;
-  background-color: green;
+  flex-direction: column;
+  background-color: rgb(26, 23, 23);
 
-  height: 100%;
-  margin: 0
+  height: 100vh;
 
 }
 
-.App-part{
-  margin: 10px;
+.App header {
+  height: 50px;
+  text-align: center;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.app-body{
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+
+  min-height: 0;
+}
+
+.Chat ,.Game{
+  display: flex;
 }
 
 .Chat{
   flex-grow: 1;
-  background-color: red;
 }
 
 .Game{
-  flex-grow: 3;
-  background-color: blue;
+  flex-grow: 4;
+  background-color: #282c34;
 }
 
 
