@@ -1,7 +1,8 @@
 function Game() {
     return (
-        <div className="Game App-part">
-            game
+        <div className="Game">
+            <div></div>
+            <div></div>
         </div>
     )
         
