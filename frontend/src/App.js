@@ -27,7 +27,7 @@ function App() {
 
 
 
-  function sendMessage(){
+  function sendMessage(message){
     setMessages(
       [ ...messages,
         {
@@ -35,7 +35,7 @@ function App() {
         author:{
             name:"some-dude"
           },
-        content: "some message"
+        content: message
         }
       ]
     )
