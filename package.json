@@ -4,7 +4,9 @@
   "description": "A simple collaborative game with an integrated chat in which the goal is to uncover the road to the exit of a labyrynth through trial and error",
   "main": "index.js",
   "scripts": {
-    "front": "npm run start --prefix ./frontend"
+    "front": "npm run start --prefix ./frontend",
+    "back":"node ./chat-server/index.js",
+    "devChat" : "npm run devChat --prefix ./frontend"
   },
   "author": "Ricard Fabien",
   "license": "GPL-3.0"
