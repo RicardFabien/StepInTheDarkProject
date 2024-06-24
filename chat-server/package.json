@@ -9,6 +9,8 @@
   "author": "Ricard Fabien",
   "license": "GPL-3.0",
   "dependencies": {
+    "express": "^4.19.2",
+    "express-ws": "^5.0.2",
     "websocket": "^1.0.34"
   }
 }
