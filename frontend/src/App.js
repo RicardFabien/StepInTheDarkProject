@@ -5,6 +5,7 @@ import Chat from "./Chat/Chat.js"
 import { useState } from 'react';
 
 function App() {
+  
 
   const [messages, setMessages] = useState(
     [
@@ -23,7 +24,7 @@ function App() {
         content: "some message"
       }
     ]
-  ) 
+  );
 
 
 
