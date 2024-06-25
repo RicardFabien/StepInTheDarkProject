@@ -2,7 +2,7 @@ const express = require("express");
 app = express();
 var expressWs = require('express-ws')(app);
 
-port = 3000;
+port = 5000;
 
 app.get("/", (req,res)=>{
     res.send("It just works")
