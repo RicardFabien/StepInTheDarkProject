@@ -4,13 +4,11 @@ import ChatMessage from "./parts/ChatMessage";
 
 function Chat({messages, sendMessage}){
 
-    console.log(messages[0].content)
-
     var chatMessages = messages.map((msg,count) =>{
         return (<ChatMessage key={count} message={msg}/> )
     }
     );
-    console.log(chatMessages)
+
 
     const [textareaVal,setTextareaVal] = useState("")
 
