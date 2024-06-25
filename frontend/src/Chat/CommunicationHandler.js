@@ -3,8 +3,9 @@
 
 class CommunicationHandler{
 
-  constructor(setIsConnected) {
-    this.setIsConnected = setIsConnected;
+  constructor(handleConnectionChange,handleNewMessageReceived) {
+    this.handleConnectionChange = handleConnectionChange;
+    this.handleNewMessageReceived = handleNewMessageReceived;
   }
 
   url = "ws://localhost:5000/echo";
@@ -17,11 +18,12 @@ class CommunicationHandler{
 
     this.websocket.onopen = (event) => {
       console.log("opening")
-      this.setIsConnected(true)
+      this.handleConnectionChange(true)
     }
 
     this.websocket.onmessage = event => {
       console.log(event.data)
+      this.handleNewMessageReceived(event.data)
     }
 
     this.websocket.onclose  = (event) => {
