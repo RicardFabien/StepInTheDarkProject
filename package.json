@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "front": "npm run start --prefix ./frontend",
-    "back":"node ./chat-server/index.js",
-    "devChat" : "npm run devChat --prefix ./frontend"
+    "back": "node ./chat-server/index.js",
+    "devChat": "npm run devChat --prefix ./frontend"
   },
   "author": "Ricard Fabien",
   "license": "GPL-3.0"
