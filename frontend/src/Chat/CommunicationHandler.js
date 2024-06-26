@@ -1,11 +1,9 @@
-//const WebSocket =  require('ws');
-//const prompt = require('prompt-sync')();
 
 class CommunicationHandler{
 
-  constructor(handleConnectionChange,handleNewMessageReceived) {
-    this.handleConnectionChange = handleConnectionChange;
-    this.handleNewMessageReceived = handleNewMessageReceived;
+  constructor(handleConnectionChange, handleNewMessageReceived){
+    this.handleConnectionChange = handleConnectionChange
+    this.handleNewMessageReceived = handleNewMessageReceived
   }
 
   url = "ws://localhost:5000/echo";
@@ -22,6 +20,7 @@ class CommunicationHandler{
     }
 
     this.websocket.onmessage = event => {
+      console.log("ONMESSAGE")
       console.log(event.data)
       this.handleNewMessageReceived(event.data)
     }

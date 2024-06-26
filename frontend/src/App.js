@@ -8,46 +8,26 @@ import CommunicationHandler from './Chat/CommunicationHandler.js';
 function App() {
 
   const [isConnected, setIsConnected] = useState(false)
-  const [messages, setMessages] = useState(
-    [
-      // {
-      //   time:0,
-      //   author:{
-      //     name:"some-dude"
-      //   },
-      //   content: "some message"
-      // }, 
-      // {
-      //   time:0,
-      //   author:{
-      //     name:"some-dude"
-      //   },
-      //   content: "some message"
-      // }
-    ]
-  );
+  const [messages, setMessages] = useState([]);
+
 
   function handleConnectionChange(isConnected){
     setIsConnected(isConnected)
   }
 
-  //TODO: Fix new messages not being added
   function handleNewMessageReceived(newMessage){
-    setMessages(
-      [ ...messages,
-        {
-        time:0,
-        author:{
-            name:"some-dude"
-          },
-        content: newMessage
-        }
-      ]
-    )
+    var newMessage = {
+      time:0,
+      author:{
+          name:"some-dude"
+        },
+      content: newMessage
+      }
+      setMessages((prevMessages) => [...prevMessages, newMessage])
   }
 
   const [messageHandler, setMessageHandler] = useState(
-    new CommunicationHandler(
+    () => new CommunicationHandler(
       handleConnectionChange,
       handleNewMessageReceived
     )
@@ -57,13 +37,9 @@ function App() {
 
     if(!isConnected){
        messageHandler.connect();
-       console.log("connected?")
-    }else{
-        //messageHandler.sendMessage("pls work")
-        console.log("should send")
     }
 
-    },[isConnected]
+    },[isConnected,messageHandler]
   )
 
   
