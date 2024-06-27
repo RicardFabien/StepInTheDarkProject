@@ -15,34 +15,34 @@ function App() {
     setIsConnected(isConnected)
   }
 
-  function handleNewMessageReceived(newMessage){
+  function handleNewMessageReceived(message){
     var newMessage = {
       time:0,
       author:{
           name:"some-dude"
         },
-      content: newMessage
+      content: message
       }
       setMessages((prevMessages) => [...prevMessages, newMessage])
   }
 
-  const [messageHandler, setMessageHandler] = useState(
-    () => new CommunicationHandler(
+  const [messageHandler] = useState(
+   () => new CommunicationHandler(
       handleConnectionChange,
       handleNewMessageReceived
     )
   )
 
   useEffect( ()=>{
+    messageHandler.connect();
 
-    if(!isConnected){
-       messageHandler.connect();
+    return () => {
+      messageHandler.disconnect();
     }
 
-    },[isConnected,messageHandler]
+    },[messageHandler]
   )
 
-  
   function sendMessage(message){
     messageHandler.sendMessage(message)
   }
