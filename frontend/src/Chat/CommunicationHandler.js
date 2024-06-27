@@ -1,6 +1,5 @@
 
 class CommunicationHandler{
-
   constructor(handleConnectionChange, handleNewMessageReceived){
     this.handleConnectionChange = handleConnectionChange
     this.handleNewMessageReceived = handleNewMessageReceived
@@ -10,6 +9,11 @@ class CommunicationHandler{
   websocket = null;
 
   connect(){
+
+    if(this.websocket){
+      return
+    }
+      
     this.websocket = new WebSocket(
       this.url
     );
@@ -20,8 +24,7 @@ class CommunicationHandler{
     }
 
     this.websocket.onmessage = event => {
-      console.log("ONMESSAGE")
-      console.log(event.data)
+      console.log("ONMESSAGE",event.data)
       this.handleNewMessageReceived(event.data)
     }
 
@@ -31,7 +34,17 @@ class CommunicationHandler{
   }
 
   sendMessage(message){
+    console.log("trying to send")
+
     this.websocket.send(message)
+  }
+
+  disconnect(){
+    if (this.websocket){
+      this.websocket.close()
+      this.websocket = null
+      console.log("disconnecting")
+    }
   }
 
 }
