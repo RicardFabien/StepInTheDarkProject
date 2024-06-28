@@ -13,18 +13,19 @@ app.get("/", (req,res)=>{
     res.send("It just works")
 })
 
-app.ws("/echo", (ws,req,client)=>{
-    ws.on("open", msg=> {
+app.ws("/echo", (webSocket,req,client)=>{
+    webSocket.on("open", ()=> {
         console.log("connecting")
     }) 
 
-    ws.on("message", msg=>{
+    webSocket.on("message", msg=>{
         websocketServer.clients.forEach(
             function each(client) {
                 client.send(JSON.stringify(msg));
           });
     })
-    ws.on("close", msg=> {
+
+    webSocket.on("close", msg=> {
         console.log("closed")
     }) 
 })
