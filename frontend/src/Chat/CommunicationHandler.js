@@ -24,8 +24,8 @@ class CommunicationHandler{
     }
 
     this.websocket.onmessage = event => {
-      console.log("ONMESSAGE",event.data)
-      this.handleNewMessageReceived(event.data)
+      console.log("ONMESSAGE",event)
+      this.handleNewMessageReceived(JSON.parse(event.data))
     }
 
     this.websocket.onclose  = (event) => {
@@ -36,7 +36,15 @@ class CommunicationHandler{
   sendMessage(message){
     console.log("trying to send")
 
-    this.websocket.send(message)
+    var newMessage = {
+      time:0,
+      author:{
+          name:"some-dude"
+        },
+      content: message
+      }
+
+    this.websocket.send(JSON.stringify(newMessage))
   }
 
   disconnect(){

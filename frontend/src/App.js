@@ -16,14 +16,7 @@ function App() {
   }
 
   function handleNewMessageReceived(message){
-    var newMessage = {
-      time:0,
-      author:{
-          name:"some-dude"
-        },
-      content: message
-      }
-      setMessages((prevMessages) => [...prevMessages, newMessage])
+    setMessages((prevMessages) => [...prevMessages, message])
   }
 
   const [messageHandler] = useState(

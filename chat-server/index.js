@@ -21,7 +21,7 @@ app.ws("/echo", (ws,req,client)=>{
     ws.on("message", msg=>{
         websocketServer.clients.forEach(
             function each(client) {
-                client.send(msg);
+                client.send(JSON.stringify(msg));
           });
     })
     ws.on("close", msg=> {
