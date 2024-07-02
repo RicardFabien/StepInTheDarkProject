@@ -6,6 +6,8 @@ class CommunicationHandler{
   }
 
   url = "ws://localhost:5000/echo";
+  // creating the WebSocket object 
+  // launches a connection attempt 
   websocket = null;
 
   connect(){
@@ -13,7 +15,9 @@ class CommunicationHandler{
     if(this.websocket){
       return
     }
-      
+    
+    // creating the WebSocket object 
+    // launches a connection attempt 
     this.websocket = new WebSocket(
       this.url
     );
@@ -33,9 +37,15 @@ class CommunicationHandler{
     }
   }
 
+  /**
+   * This method put the message in a object that is then sent to the server 
+   * This method contains the logic that is related directly to communication 
+   * (username, authorisation token...).
+   * Any logic that pertains to modifying the user input should be handled upstream.
+   * 
+   * @param {string} message  
+   */
   sendMessage(message){
-    console.log("trying to send")
-
     var newMessage = {
       time:0,
       author:{
