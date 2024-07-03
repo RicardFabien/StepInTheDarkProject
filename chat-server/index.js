@@ -19,7 +19,7 @@ app.ws("/echo", (webSocket,req,client)=>{
     }) 
 
     webSocket.on("message", msg=>{
-        // broadcasting, sender included
+        // broadcasting to all, sender included
         websocketServer.clients.forEach(
             function each(client) {
                 client.send(JSON.stringify(msg));
