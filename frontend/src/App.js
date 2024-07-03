@@ -28,7 +28,17 @@ function App() {
 
   // Method is passed to communication object
   function handleNewMessageReceived(message){
-    setMessages((prevMessages) => [...prevMessages, message])
+
+    console.log(message)
+
+    if(message.type === "connect"){
+      console.log("connect message")
+      setMessages(message.data)
+    }
+    else{
+      setMessages((prevMessages) => [...prevMessages, message])
+    }
+
   }
 
   const [messageHandler] = useState(
