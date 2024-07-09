@@ -16,6 +16,8 @@ app.get("/", (req,res)=>{
 })
 
 app.ws("/echo", (webSocket,req,client)=>{
+
+
     webSocket.on("message", msg=>{
         console.log("msg received")
 
@@ -30,15 +32,15 @@ app.ws("/echo", (webSocket,req,client)=>{
             function each(client) {
                 client.send(broadcatsedMessage);
           });
-
-        console.log("connecting")
     })
 
     webSocket.on("close", msg=> {
         console.log("closed")
     }) 
 
-    handle_connection();
+
+    console.log(req)
+    handle_connection(webSocket);
 
 })
 
@@ -46,7 +48,7 @@ app.listen(port,()=>{
     console.log("server on")
 })
 
-function handle_connection(){
+function handle_connection(webSocket){
     const data = getUnstriginfiedPreviousMessages()
       
     console.log("got msgs")
