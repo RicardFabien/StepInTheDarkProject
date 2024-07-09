@@ -38,22 +38,27 @@ app.ws("/echo", (webSocket,req,client)=>{
         console.log("closed")
     }) 
 
-    const data = getUnstriginfiedPreviousMessages()
-      
-        console.log("got msgs")
-      
-        webSocket.send(
-            JSON.stringify({
-                type: "connect",
-                data: data
-            })
-        )
-          console.log("sent old messages")
+    handle_connection();
+
 })
 
 app.listen(port,()=>{
     console.log("server on")
 })
+
+function handle_connection(){
+    const data = getUnstriginfiedPreviousMessages()
+      
+    console.log("got msgs")
+      
+    webSocket.send(
+        JSON.stringify({
+            type: "connect",
+            data: data
+        })
+    )
+    console.log("sent old messages")
+}
 
 /**
  * 
