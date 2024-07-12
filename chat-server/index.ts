@@ -1,36 +1,41 @@
-const express = require("express");
-app = express();
+import  express from "express"
+const app = express();
 
-const wsLibrary = require("ws");
-const WebSocket = typeof wsLibrary.WebSocket;
+import expressWs from "express-ws"
 
-var expressWs = require('express-ws')(app);
-var websocketServer = expressWs.getWss();
+var instance = expressWs(app);
+var wsApp = instance.app;
+var websocketServer = instance.getWss();
 
-port = 5000;
+const port = 5000;
 
-const messageList = []
+type Message = any;
+type CommRequest = any;
 
-app.get("/", (req,res)=>{
+//TODO: add correct type
+const messageList: Message[] = []
+
+app.get(
+    "/", (req,res)=>{
     res.send("It just works")
 })
 
-app.ws("/echo", (webSocket,req,client)=>{
+wsApp.ws("/echo", (webSocket,req,client)=>{
 
 
-    webSocket.on("message", msg=>{
+    webSocket.on("message", (msg: string)=>{
         console.log("msg received")
 
-        var parsedMessage = JSON.parse(msg)
-        parsedMessage = formattingMessage(parsedMessage)
+        var commRequest:CommRequest = JSON.parse(msg)
+        var parsedMessage: Message = formattingMessage(commRequest)
         addMessageToList(parsedMessage)
 
-        broadcatsedMessage = JSON.stringify(parsedMessage)
+        var broadcastedMessage: string = JSON.stringify(parsedMessage)
 
         // broadcasting to all, sender included
         websocketServer.clients.forEach(
             function each(client) {
-                client.send(broadcatsedMessage);
+                client.send(broadcastedMessage);
           });
     })
 
@@ -40,6 +45,8 @@ app.ws("/echo", (webSocket,req,client)=>{
 
 
     console.log(req)
+
+    webSocket.close
     handle_connection(webSocket);
 
 })
@@ -48,7 +55,7 @@ app.listen(port,()=>{
     console.log("server on")
 })
 
-function handle_connection(webSocket){
+function handle_connection(webSocket: import("ws")){
     const data = getUnstriginfiedPreviousMessages()
       
     console.log("got msgs")
@@ -66,7 +73,7 @@ function handle_connection(webSocket){
  * 
  * @param {object} message_object 
  */
-function formattingMessage(message_object){
+function formattingMessage(message_object: Message){
 
     var new_object = {
         ...message_object
@@ -77,7 +84,7 @@ function formattingMessage(message_object){
     return new_object
 }
 
-function addMessageToList(msgObject){
+function addMessageToList(msgObject: Message){
     messageList.push(msgObject)
 }
 
@@ -86,7 +93,15 @@ function getPreviousMessages(amount=10){
 
     
     const lastMessages = getUnstriginfiedPreviousMessages()
-    const stringifiedMessages = lastMessages.map(msg => JSON.stringify(msg))
+
+    var stringifiedMessages:string[] = [];
+
+    if(lastMessages){
+        stringifiedMessages = lastMessages.map(
+            msg => JSON.stringify(msg)
+        )
+    }
+    
 
     return stringifiedMessages
 
