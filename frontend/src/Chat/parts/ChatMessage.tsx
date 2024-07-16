@@ -1,4 +1,12 @@
-function ChatMessage({message}){
+import React from "react";
+
+type MessageObject = any
+
+interface ChatMessageProps{
+    readonly message: MessageObject
+}
+
+function ChatMessage({message}: ChatMessageProps ){
     return (
         <div className = "chat-message">
             <p>
