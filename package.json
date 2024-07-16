@@ -4,6 +4,8 @@
   "description": "A simple collaborative game with an integrated chat in which the goal is to uncover the road to the exit of a labyrynth through trial and error",
   "main": "index.js",
   "scripts": {
+    "build": "npx tsc && copyfiles \"./**/public/**\" \"./**/**.json\" -e \"./**/node_modules/**\" -e \"./**/**.ts\" -e \"./**.json\" -e \"./build/**\" ./build",
+
     "front": "npm run start --prefix ./frontend",
     "back": "node ./chat-server/index.js",
     "devChat": "npm run devChat --prefix ./frontend"
@@ -13,12 +15,12 @@
   "dependencies": {
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
-    "copyfiles": "^2.4.1",
     "typescript": "^5.5.3"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/express-ws": "^3.0.4",
-    "@types/ws": "^8.5.10"
+    "@types/ws": "^8.5.10",
+    "copyfiles": "^2.4.1"
   }
 }
