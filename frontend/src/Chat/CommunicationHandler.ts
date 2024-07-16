@@ -1,6 +1,15 @@
+import { error } from "console";
 
 class CommunicationHandler{
-  constructor(handleConnectionChange, handleNewMessageReceived){
+
+  handleConnectionChange:Function = () => {
+    throw error("Something is missing")
+  }
+  handleNewMessageReceived:Function = () => {
+    throw error("Something is missing")
+  }
+
+  constructor(handleConnectionChange:Function, handleNewMessageReceived:Function){
     this.handleConnectionChange = handleConnectionChange
     this.handleNewMessageReceived = handleNewMessageReceived
   }
@@ -8,7 +17,7 @@ class CommunicationHandler{
   url = "ws://localhost:5000/echo";
   // creating the WebSocket object 
   // launches a connection attempt 
-  websocket = null;
+  websocket: WebSocket | null = null;
 
   connect(){
 
@@ -43,18 +52,20 @@ class CommunicationHandler{
    * (username, authorisation token...).
    * Any logic that pertains to modifying the user input should be handled upstream.
    * 
-   * @param {string} message  
+   * @param {string} messageText  
    */
-  sendMessage(message){
+  sendMessage(messageText:string){
     var newMessage = {
       time:0,
       author:{
           name:"some-dude"
         },
-      content: message
+      content: messageText
       }
 
-    this.websocket.send(JSON.stringify(newMessage))
+      if(this.websocket){
+        this.websocket.send(JSON.stringify(newMessage))
+      }
   }
 
   disconnect(){

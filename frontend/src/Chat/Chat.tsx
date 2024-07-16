@@ -13,12 +13,11 @@ interface ChatProp {
 
 function Chat({messages, sendMessage}:ChatProp){
 
-
+    // TODO: give proper key based on id
     var chatMessages = messages.map((msg:Message,count) =>{
         return (<ChatMessage key={count} message={msg}/> )
-    }
+        }
     );
-
 
     const [textareaVal,setTextareaVal] = useState("")
 

@@ -1,9 +1,13 @@
 
 import './App.css';
-import Game from "./Game/Game.js"
-import Chat from "./Chat/Chat.js"
+import Game from "./Game/Game"
+import Chat from "./Chat/Chat"
 import { useEffect, useState } from 'react';
-import CommunicationHandler from './Chat/CommunicationHandler.js';
+import CommunicationHandler from './Chat/CommunicationHandler';
+import React from 'react';
+
+
+type Message = any;
 
 function App() {
 
@@ -19,15 +23,15 @@ function App() {
    * 
    * TODO: Updated on connect with messages the client had before the connection
    */
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([] as Message[]);
 
   // Method is passed to communication object
-  function handleConnectionChange(isConnected){
-    setIsConnected(isConnected)
+  function handleConnectionChange(newIsCnnected: boolean){
+    setIsConnected(newIsCnnected)
   }
 
   // Method is passed to communication object
-  function handleNewMessageReceived(message){
+  function handleNewMessageReceived(message: Message){
 
     console.log(message)
 
@@ -36,6 +40,8 @@ function App() {
       setMessages(message.data)
     }
     else{
+
+
       setMessages((prevMessages) => [...prevMessages, message])
     }
 
@@ -58,11 +64,11 @@ function App() {
   )
 
   /**
-   * This method sends the 
+   * This method sends the message to the connected server
    * 
    * @param {string} message The message the user tries to send 
    */
-  function sendMessage(message){
+  function sendMessage(message: Message){
     messageHandler.sendMessage(message)
   }
 
