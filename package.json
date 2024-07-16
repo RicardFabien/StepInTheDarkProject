@@ -13,6 +13,7 @@
   "dependencies": {
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
+    "copyfiles": "^2.4.1",
     "typescript": "^5.5.3"
   },
   "devDependencies": {
