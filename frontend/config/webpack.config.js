@@ -294,7 +294,7 @@ module.exports = function (webpackEnv) {
     },
     resolve: {
 
-      fallbacks: {
+      fallback: {
         "console": require.resolve('console-browserify'), 
       },
       // This allows you to set a fallback for where webpack should look for modules.
