@@ -1,9 +1,10 @@
 
-import './App.css';
-import Game from "./Game/Game"
-import Chat from "./Chat/Chat"
+import './public/App.css';
+import "./public/Chat.css"
+import Game from "./src/Game/Game"
+import Chat from "./src/Chat/Chat"
 import { useEffect, useState } from 'react';
-import CommunicationHandler from './Chat/CommunicationHandler';
+import CommunicationHandler from './src/Chat/CommunicationHandler';
 import React from 'react';
 
 

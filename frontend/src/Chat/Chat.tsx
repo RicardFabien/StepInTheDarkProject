@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./Chat.css"
 import ChatMessage from "./parts/ChatMessage";
 import React from "react";
 
