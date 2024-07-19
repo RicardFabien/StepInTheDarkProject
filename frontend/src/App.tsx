@@ -1,6 +1,6 @@
 
-import './public/App.css';
-import "./public/Chat.css"
+import './style/App.css';
+import "./style/Chat.css"
 import Game from "./Game/Game"
 import Chat from "./Chat/Chat"
 import { useEffect, useState } from 'react';
