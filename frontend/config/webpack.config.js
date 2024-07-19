@@ -296,6 +296,9 @@ module.exports = function (webpackEnv) {
 
       fallback: {
         "console": require.resolve('console-browserify'), 
+        "util": require.resolve("util/"),
+        "assert": require.resolve("assert/")
+
       },
       // This allows you to set a fallback for where webpack should look for modules.
       // We placed these paths second because we want `node_modules` to "win"
