@@ -7,7 +7,7 @@ function Game() {
     return (
         <div className="Game">
             <div className="Board" style={{
-                "backgroundColor":"red"
+                "backgroundColor":"blue"
             }}>
 
             </div>
