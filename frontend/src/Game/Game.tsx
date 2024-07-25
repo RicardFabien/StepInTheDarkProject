@@ -1,10 +1,19 @@
 import React from "react";
 
 function Game() {
+
+
+
     return (
         <div className="Game">
-            <div></div>
-            <div></div>
+            <div className="Board" style={{
+                "backgroundColor":"red"
+            }}>
+
+            </div>
+            <div className="Control">
+
+            </div>
         </div>
     )
         

@@ -1,0 +1,8 @@
+.Game .Board{
+    flex-grow: 6;
+}
+
+.Game .Control{
+    flex-grow: 1;
+}
+
