@@ -4,9 +4,9 @@
   "description": "A simple collaborative game with an integrated chat in which the goal is to uncover the road to the exit of a labyrynth through trial and error",
   "main": "index.js",
   "scripts": {
-    "file-build": "npx copyfiles \"./**/public/**\"  -e \"./**/node_modules/**\" -e \"./**/**.ts\" -e \"./**.json\" -e \"./build/**\" ./build",
+    "file-build": "npx copyfiles \"./**/public/**\" \"./**/style/**\"  -e \"./**/node_modules/**\" -e \"./**/**.ts\" -e \"./**.json\" -e \"./build/**\" ./build",
     
-    "build": "npx tsc && copyfiles \"./**/public/**\"  -e \"./**/node_modules/**\" -e \"./**/**.ts\" -e \"./**.json\" -e \"./build/**\" ./build",
+    "build": "npx tsc && npm run file-build",
     "build-i": "npx copyfiles ./package.json ./package-lock.json  \"./**/**.json\" -e \"./**/node_modules/**\" -e ./tsconfig.json -e \"./build/**\" ./build && npm run install-all -prefix ./build",
     "install-all": "npm i && npm i -prefix chat-server && npm i -prefix frontend",
     "front": "npm run start --prefix ./build/frontend",
