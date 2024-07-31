@@ -1,8 +1,7 @@
 import React from "react";
+import GameController from "./GameController";
 
 function Game() {
-
-
 
     return (
         <div className="Game">
@@ -11,9 +10,7 @@ function Game() {
             }}>
 
             </div>
-            <div className="Control">
-
-            </div>
+            <GameController/>
         </div>
     )
         
