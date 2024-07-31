@@ -1,8 +1,7 @@
-class GameEngine{
-    map: GameMap;
+class GameEngine {
+  map: GameMap;
 
-    constructor(gridSize: number){
-        this.map = new GameMap(gridSize);
-    }
-
+  constructor(gridSize: number) {
+    this.map = new GameMap(gridSize);
+  }
 }
