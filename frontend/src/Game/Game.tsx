@@ -1,5 +1,6 @@
 import React from "react";
 import GameController from "./GameController";
+import GamePanel from "./GamePanel";
 
 function Game() {
   return (
@@ -9,7 +10,9 @@ function Game() {
         style={{
           backgroundColor: "blue",
         }}
-      ></div>
+      >
+        <GamePanel />
+      </div>
       <GameController />
     </div>
   );
