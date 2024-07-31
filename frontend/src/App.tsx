@@ -4,7 +4,7 @@ import "./style/Chat.css";
 import "./style/Game.css";
 import Game from "./Game/Game"
 import Chat from "./Chat/Chat"
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import CommunicationHandler from './Chat/CommunicationHandler';
 import React from 'react';
 
@@ -27,27 +27,27 @@ function App() {
    */
   const [messages, setMessages] = useState([] as Message[]);
 
-  // Method is passed to communication object
-  function handleConnectionChange(newIsCnnected: boolean){
-    setIsConnected(newIsCnnected)
-  }
+
+  const handleConnectionChange = useCallback((newIsConnected: boolean) =>
+    {
+    setIsConnected(newIsConnected)
+  },[])
 
   // Method is passed to communication object
-  function handleNewMessageReceived(message: Message){
+  const  handleNewMessageReceived = useCallback(
+    (message: Message)=> {
 
-    console.log(message)
+      console.log(message)
 
-    if(message.type === "connect"){
-      console.log("connect message")
-      setMessages(message.data)
+      if(message.type === "connect"){
+        console.log("connect message")
+        setMessages(message.data)
+      }
+      else{
+        setMessages((prevMessages) => [...prevMessages, message])
     }
-    else{
 
-
-      setMessages((prevMessages) => [...prevMessages, message])
-    }
-
-  }
+  },[])
 
   const [messageHandler] = useState(
    () => new CommunicationHandler(
@@ -65,14 +65,6 @@ function App() {
     },[messageHandler]
   )
 
-  /**
-   * This method sends the message to the connected server
-   * 
-   * @param {string} message The message the user tries to send 
-   */
-  function sendMessage(message: Message){
-    messageHandler.sendMessage(message)
-  }
 
   return (
     <div className="App">
@@ -82,7 +74,7 @@ function App() {
 
       <div className="app-body">
         <Game/>
-        <Chat messages={messages} sendMessage={sendMessage}/>
+        <Chat messages={messages} sendMessage={messageHandler.sendMessage}/>
       </div>
       
     </div>
