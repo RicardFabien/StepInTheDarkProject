@@ -1,3 +1,5 @@
+import GameMap from "./GameMap";
+
 class GameEngine {
   map: GameMap;
 

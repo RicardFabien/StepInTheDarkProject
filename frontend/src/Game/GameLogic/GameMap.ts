@@ -21,3 +21,5 @@ class Square {
     right: boolean;
   } = { up: false, down: false, left: false, right: false };
 }
+
+export default GameMap;
