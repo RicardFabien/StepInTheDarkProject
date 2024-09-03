@@ -20,6 +20,16 @@ class Square {
     left: boolean;
     right: boolean;
   } = { up: false, down: false, left: false, right: false };
+  // When the player move it leaves tracks
+  // Track appears when the player move between 2 squares (and doesn't die),
+  // They go from origin square to target square
+  // If a player goes from a to b and b is to the right, Right is true for a and Left is true for b
+  tracks: {
+    up: boolean;
+    down: boolean;
+    left: boolean;
+    right: boolean;
+  } = { up: false, down: false, left: false, right: false };
 }
 
-export default GameMap;
+export { GameMap as default, Square };
