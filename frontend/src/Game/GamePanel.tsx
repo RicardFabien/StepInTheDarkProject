@@ -51,41 +51,31 @@ const squarePartStyle = {
 };
 
 function Square(props: any) {
-  const revealedWall = { left: true, down: true, right: true, up: true };
-  //props.children.revealedWall;
-
+  const revealedWall = props.children.revealedWall;
   const tracks = props.children.tracks;
+
+  var quarterSquareStyle = squarePartStyle;
+
+  var div1Style,
+    div2Style,
+    div3Style,
+    div4Style: {} = quarterSquareStyle;
+
+  // If the flag for the track is true, add a border that represent that tracks
+  // If tracks.down is true, a bottom track will be shown
+  // If tracks.left is false, the left track will NOT be shown
+  if (tracks.up) div1Style = { ...quarterSquareStyle, borderRight: "solid" };
+  if (tracks.right)
+    div2Style = { ...quarterSquareStyle, borderBottom: "solid" };
+  if (tracks.left) div3Style = { ...quarterSquareStyle, borderTop: "solid" };
+  if (tracks.down) div4Style = { ...quarterSquareStyle, borderLeft: "solid" };
 
   return (
     <div className={"Square"} style={containerStyle}>
-      <div
-        style={
-          revealedWall.up
-            ? { ...squarePartStyle, borderRight: "solid" }
-            : squarePartStyle
-        }
-      ></div>
-      <div
-        style={
-          revealedWall.right
-            ? { ...squarePartStyle, borderBottom: "solid" }
-            : squarePartStyle
-        }
-      ></div>
-      <div
-        style={
-          revealedWall.left
-            ? { ...squarePartStyle, borderTop: "solid" }
-            : squarePartStyle
-        }
-      ></div>
-      <div
-        style={
-          revealedWall.down
-            ? { ...squarePartStyle, borderLeft: "solid" }
-            : squarePartStyle
-        }
-      ></div>
+      <div style={div1Style}></div>
+      <div style={div2Style}></div>
+      <div style={div3Style}></div>
+      <div style={div4Style}></div>
     </div>
   );
 }
