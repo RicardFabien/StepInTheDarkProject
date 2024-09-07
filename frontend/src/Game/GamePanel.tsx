@@ -4,14 +4,6 @@ import GameMap from "./GameLogic/GameMap";
 function GamePanel() {
   var [map, setMap] = useState(new GameMap(2));
 
-  map.grid[0][0].revealedWall.up = true;
-  map.grid[0][1].revealedWall.left = true;
-  map.grid[0][1].tracks.up = true;
-  map.grid[0][1].tracks.left = true;
-
-  map.grid[1][0].tracks.down = true;
-  map.grid[1][1].tracks.left = true;
-
   if (map == null) {
     return <div>{"Nothing yet :("}</div>;
   }
