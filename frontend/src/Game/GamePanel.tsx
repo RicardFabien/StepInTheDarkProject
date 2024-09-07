@@ -1,8 +1,17 @@
 import React, { useState } from "react";
-import { GameMap } from "./GameLogic/GameData";
+import { GameMap, SquareData, UserAvatar } from "./GameLogic/GameData";
 
 function GamePanel() {
   var [map, setMap] = useState(new GameMap(2));
+
+  map.grid[0][0].revealedWall.up = true;
+  map.grid[0][1].revealedWall.left = true;
+  map.grid[0][1].tracks.up = true;
+  map.grid[0][1].tracks.left = true;
+
+  map.grid[1][0].tracks.down = true;
+  map.grid[1][1].tracks.left = true;
+  map.grid[0][1].userAvatars = [new UserAvatar()];
 
   if (map == null) {
     return <div>{"Nothing yet :("}</div>;
@@ -33,8 +42,11 @@ const containerStyle = {
 var quarterBaseStyle = {};
 
 function Square(props: any) {
-  const revealedWall = props.children.revealedWall;
-  const tracks = props.children.tracks;
+  const data: SquareData = props.children;
+
+  const revealedWall = data.revealedWall;
+  const tracks = data.tracks;
+  const user = data.userAvatars;
 
   var div1Style,
     div2Style,
@@ -63,6 +75,16 @@ function Square(props: any) {
       <div style={div2Style}></div>
       <div style={div3Style}></div>
       <div style={div4Style}></div>
+
+      <div
+        className={"UserDot"}
+        style={{
+          color: "red",
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+        }}
+      ></div>
     </div>
   );
 }
