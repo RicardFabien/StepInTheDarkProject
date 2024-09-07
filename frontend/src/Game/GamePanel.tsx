@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import GameMap from "./GameLogic/GameMap";
+import { GameMap } from "./GameLogic/GameData";
 
 function GamePanel() {
   var [map, setMap] = useState(new GameMap(2));

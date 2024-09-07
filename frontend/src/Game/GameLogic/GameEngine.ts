@@ -1,4 +1,4 @@
-import GameMap from "./GameMap";
+import { GameMap } from "./GameData";
 
 class GameEngine {
   map: GameMap;

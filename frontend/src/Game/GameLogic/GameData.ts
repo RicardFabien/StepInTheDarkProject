@@ -1,5 +1,5 @@
 class GameMap {
-  grid: Square[][];
+  grid: SquareData[][];
 
   constructor(gridSize: number = 3) {
     // makes a bidimensionnal array filled with Square objects
@@ -7,13 +7,15 @@ class GameMap {
     // So gridsize 3 would be a 3x3 grid
     this.grid = Array.from({ length: gridSize }, () => {
       return Array.from({ length: gridSize }, () => {
-        return new Square();
+        return new SquareData();
       });
     });
   }
 }
 
-class Square {
+class SquareData {
+  userAvatars: UserAvatar[] = [];
+
   revealedWall: {
     up: boolean;
     down: boolean;
@@ -32,4 +34,9 @@ class Square {
   } = { up: false, down: false, left: false, right: false };
 }
 
-export { GameMap as default, Square };
+class UserAvatar {
+  coordinate: [number, number] = [0, 0];
+  name: string = "default";
+}
+
+export { GameMap, SquareData, UserAvatar };
